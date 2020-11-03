@@ -1,0 +1,29 @@
+/* CUSTOM STYLES */
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 100%;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+header h1 {
+    color: #FFF;
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 576px) {
+
+}
