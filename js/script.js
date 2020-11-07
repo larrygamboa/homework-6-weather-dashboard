@@ -30,7 +30,7 @@ $("#city-search").on("click", function(event) {
 
 // Create function to retrieve and display current weather
 function getCurrentWeather(cityName) {
-    // Create URL
+    // Create weather URL
     var queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
 
     // Make AJAX call to get current weather data
@@ -38,6 +38,9 @@ function getCurrentWeather(cityName) {
         url: queryUrl,
         method: "GET"
     }).then(function(data) {
+
+        console.log("data", data)
+
         // Create current weather html markup
         var currentWeatherMarkup =
         `
@@ -61,7 +64,38 @@ function getCurrentWeather(cityName) {
 
 // Create function to retrieve and display 5-day forecast
 function getFiveDayForecast(cityName) {
+    // Create forecast URL
+    var queryUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
 
-    
+    // Make AJAX call to get forecast data
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+    }).then(function(data) {
+
+        console.log("forecast", data);
+
+        // Create forecast html markup
+        var forecastWeatherMarkUp = "";
+
+        for (let i = 0; i < data.list.length; i++) {
+            if (data.list[i].dt_txt.indexOf("12:00:00") > -1) {
+                forecastWeatherMarkUp += `
+                <div class="col-md card m-2">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p><strong>${new Date().toLocaleDateString()}</strong></p>
+                        </div>
+                        <div><img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"></div>
+                        <p>Temperature: ${data.list[i].main.temp}&deg;F</p>
+                        <p>Humidity: ${data.list[i].main.humidity}%</p>
+                    </div>
+                </div>
+                `;
+            }
+        }
+        //add the mark to the page
+        $("#five-day-forecast").html(forecastWeatherMarkUp);
+    });
 };
 
