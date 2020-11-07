@@ -7,6 +7,7 @@ var fiveDayForecast = $("#five-day-forecast");
 // Default cities to display
 var cities = ["San Diego", "Seattle", "New York", "Miami"];
 
+
 // Add event listener to search button
 $("#city-search").on("click", function(event) {
     // console.log("Test the click!")
@@ -29,6 +30,14 @@ $("#city-search").on("click", function(event) {
     localStorage.setItem("userInput", JSON.stringify(userInput));
     console.log(localStorage);
 
+    // var storedCities;
+
+    // if (localStorage.getItem(storedCities)) {
+    //     storedCities = JSON.parse(localStorage.getItem(storedCities));
+    //     writeSearchHistory(storedCities);
+    // } else {
+    //     storedCities = [];
+    // };
 });
 
 // Render default cities buttons
@@ -45,7 +54,7 @@ function renderButtons() {
 };
 renderButtons();
 
-// Add function to default city buttons
+// Add function to city buttons
 $("#buttons-view").on("click", function(event) {
     event.preventDefault();
     var search = (event.target.innerText);
@@ -59,6 +68,10 @@ $("#buttons-view").on("click", function(event) {
         console.log(search);
         console.log(response);
     });
+
+    // This adds click functionality to appended city buttons
+    getCurrentWeather(search);
+    getFiveDayForecast(search);
 });
 
 // Create function to retrieve and display current weather
@@ -135,27 +148,3 @@ function getFiveDayForecast(cityName) {
 // Get default weather and forecast to populate
 getCurrentWeather("San Diego");
 getFiveDayForecast("San Diego");
-
-
-// $("#city-search").click(function() {
-//     event.preventDefault();
-//     var cityName = $("#city-input").val();
-//     getCurrentWeather(cityName);
-//     getFiveDayForecast(cityName);
-// });
-
-// $("#buttons-view").click(function() {
-//     var cityName = event.target.value;
-//     getCurrentWeather(cityName);
-//     getFiveDayForecast(cityName);
-// });
-
-$(document).on("click", ".city-btn", function () {
-    var cityName = $(this).attr("data-name");
-    getCurrentWeather(cityName);
-    getFiveDayForecast(cityName);
-});
-
-
-// $(document).on("click", ".city-btn", getCurrentWeather);
-// renderButtons();
