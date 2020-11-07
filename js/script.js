@@ -8,6 +8,7 @@ var cities = ["San Diego, Seattle, New York, Miami"];
 
 // Add event listener to search button
 $("#city-search").on("click", function(event) {
+    console.log("Test the click!")
     event.preventDefault();
 
     // Get the user input
@@ -29,8 +30,33 @@ $("#city-search").on("click", function(event) {
 
 // Create function to retrieve and display current weather
 function getCurrentWeather(cityName) {
+    // Create URL
+    var queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
 
-
+    // Make AJAX call to get current weather data
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+    }).then(function(data) {
+        // Create current weather html markup
+        var currentWeatherMarkup =
+        `
+        <div class="col-md card m-2" style="width:auto;">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <strong>${data.name}</strong>
+                    <span>(${new Date().toLocaleDateString()})</span>
+                    <span><img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"></span>
+                </h4>
+                <p>Temperature: ${data.main.temp}&deg;F</p>
+                <p>Humidity: ${data.main.humidity}%</p>
+                <p>Wind Speed: ${data.wind.speed}MPH</p>
+            </div>
+        </div>
+        `;
+        // Add markup to current-weather div
+        $("#current-weather").html(currentWeatherMarkup);
+    });
 };
 
 // Create function to retrieve and display 5-day forecast
