@@ -77,7 +77,7 @@ $("#buttons-view").on("click", function(event) {
 // Create function to retrieve and display current weather
 function getCurrentWeather(cityName) {
     // Create weather URL
-    var queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+    var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
 
     // Make AJAX call to get current weather data
     $.ajax({
@@ -95,7 +95,7 @@ function getCurrentWeather(cityName) {
                 <h4 class="card-title">
                     <strong>${data.name}</strong>
                     <span>(${new Date().toLocaleDateString()})</span>
-                    <span><img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"></span>
+                    <span><img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png"></span>
                 </h4>
                 <p>Temperature: ${data.main.temp}&deg;F</p>
                 <p>Humidity: ${data.main.humidity}%</p>
@@ -111,7 +111,7 @@ function getCurrentWeather(cityName) {
 // Create function to retrieve and display 5-day forecast
 function getFiveDayForecast(cityName) {
     // Create forecast URL
-    var queryUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
+    var queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
 
     // Make AJAX call to get forecast data
     $.ajax({
@@ -132,7 +132,7 @@ function getFiveDayForecast(cityName) {
                         <div class="card-title">
                             <p><strong>${new Date().toLocaleDateString()}</strong></p>
                         </div>
-                        <div><img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"></div>
+                        <div><img src="https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png"></div>
                         <p>Temperature: ${data.list[i].main.temp}&deg;F</p>
                         <p>Humidity: ${data.list[i].main.humidity}%</p>
                     </div>
