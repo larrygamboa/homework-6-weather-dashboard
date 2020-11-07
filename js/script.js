@@ -3,12 +3,13 @@ var apiKey = "fb7c1ad92bb81728d12349821ce85842";
 var currentWeather = $("#current-weather");
 var fiveDayForecast = $("#five-day-forecast");
 
+
 // Default cities to display
-var cities = ["San Diego, Seattle, New York, Miami"];
+var cities = ["San Diego", "Seattle", "New York", "Miami"];
 
 // Add event listener to search button
 $("#city-search").on("click", function(event) {
-    console.log("Test the click!")
+    // console.log("Test the click!")
     event.preventDefault();
 
     // Get the user input
@@ -23,10 +24,42 @@ $("#city-search").on("click", function(event) {
 
     // Append city button to result container
     $("#buttons-view").append('<button class="btn btn-outline-secondary btn-clock city-btn">' + userInput + '</button>');
+
+    // Set local storage
+    localStorage.setItem("userInput", JSON.stringify(userInput));
+    console.log(localStorage);
+
 });
 
-// Render city buttons
+// Render default cities buttons
+function renderButtons() {
+    $("#buttons-view").empty();
+    for (var i = 0; i < cities.length; i++) {
+        var a = $("<button>");
+        a.addClass("btn btn-outline-secondary btn-block city-btn");
+        a.attr("data-name", cities[i]);
+        a.text(cities[i]);
+        $("#buttons-view").append(a);
+    };
+    console.log(cities);
+};
+renderButtons();
 
+// Add function to default city buttons
+$("#buttons-view").on("click", function(event) {
+    event.preventDefault();
+    var search = (event.target.innerText);
+    var searchUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + search + "&appid=fb7c1ad92bb81728d12349821ce85842"
+    
+    $.ajax({
+        url: searchUrl,
+        method: "GET",
+    }).then(function(response){
+        console.log("Test to see if this works");
+        console.log(search);
+        console.log(response);
+    });
+});
 
 // Create function to retrieve and display current weather
 function getCurrentWeather(cityName) {
@@ -104,3 +137,25 @@ getCurrentWeather("San Diego");
 getFiveDayForecast("San Diego");
 
 
+// $("#city-search").click(function() {
+//     event.preventDefault();
+//     var cityName = $("#city-input").val();
+//     getCurrentWeather(cityName);
+//     getFiveDayForecast(cityName);
+// });
+
+// $("#buttons-view").click(function() {
+//     var cityName = event.target.value;
+//     getCurrentWeather(cityName);
+//     getFiveDayForecast(cityName);
+// });
+
+$(document).on("click", ".city-btn", function () {
+    var cityName = $(this).attr("data-name");
+    getCurrentWeather(cityName);
+    getFiveDayForecast(cityName);
+});
+
+
+// $(document).on("click", ".city-btn", getCurrentWeather);
+// renderButtons();
