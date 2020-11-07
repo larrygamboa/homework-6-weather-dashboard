@@ -1,5 +1,5 @@
 // Set up variables
-var apiKey = WEATHER_API_KEY;
+var apiKey = "fb7c1ad92bb81728d12349821ce85842";
 var currentWeather = $("#current-weather");
 var fiveDayForecast = $("#five-day-forecast");
 
