@@ -99,3 +99,8 @@ function getFiveDayForecast(cityName) {
     });
 };
 
+// Get default weather and forecast to populate
+getCurrentWeather("San Diego");
+getFiveDayForecast("San Diego");
+
+
