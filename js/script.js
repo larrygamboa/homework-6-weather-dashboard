@@ -1,15 +1,18 @@
 // Set up variables
 var apiKey = "fb7c1ad92bb81728d12349821ce85842";
-var currentWeather = $("#currentWeather");
-var fiveDayForecast = $("#fiveDayForecast");
+var currentWeather = $("#current-weather");
+var fiveDayForecast = $("#five-day-forecast");
 
 
-// Set up local storage for city search
+// Add event listener to search button
 
 
-// Create function to retrieve current weather
+// Render city buttons
 
 
-// Create function to retrieve 5 day forecast
+// Create function to retrieve and display current weather
+
+
+// Create function to retrieve and display 5-day forecast
 
 
