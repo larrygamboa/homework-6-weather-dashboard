@@ -18,41 +18,42 @@
     </header>
 
     <!-- BODY CONTAINER -->
-    <div class="container pt-3">
+    <main>
         <div class="row">
             <!-- SEARCH COLUMN -->
-            <div class="col-md-3 searchColumn">
-                <form>
+            <div class="col-md-3 pt-3 searchColumn">
+                <form class="mb-3">
                     <h3>Search for a City:</h3>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="cityInput" placeholder="Enter City">
+                        <input type="text" class="form-control" id="city-input" placeholder="Enter City" name="city">
                         <div class="input-group-append">
-                            <button type="submit" id="citySearch" class="btn btn-primary fas fa-search">Search</button>
+                            <input id="city-search" class="btn btn-primary fas fa-search" type="submit" value="Search">
                         </div>
                     </div>
                 </form>
-                <div id="cityResults" class="btn-group-vertical">
+
+                <div id="buttons-view" class="btn-group-vertical">
                     <!-- CITY SEARCH RESULTS GO HERE -->
                 </div>
             </div>
 
             <!-- WEATHER RESULTS -->
-            <div class="col-md-9">
-                <div>
+            <div class="col-md-9 pt-3">
+                <div class="mb-3">
                     <h2>Current Weather</h2>
-                    <div id="currentWeather">
+                    <div id="current-weather">
                         <!-- CURRENT WEATHER RESULTS GO HERE -->
                     </div>
                 </div>
-                <div>
+                <div class="mb-3">
                     <h3>5-Day Forecast:</h3>
-                    <div class="row" id="fiveDayForecast">
+                    <div id="five-day-forecast" class="row">
                         <!-- 5-DAY FORECAST RESULTS GO HERE -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>

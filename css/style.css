@@ -1,7 +1,11 @@
 /* CUSTOM STYLES */
 body {
     font-family: 'Inter', sans-serif;
-    font-size: 100%;
+    font-size: 110%;
+}
+
+.row {
+    margin: 0;
 }
 
 h1, h2, h3 {
@@ -10,6 +14,25 @@ h1, h2, h3 {
 
 header h1 {
     color: #FFF;
+}
+
+.searchColumn {
+    background-color: #EEEEEE;
+}
+#cityResults {
+    width: 100%;
+}
+#buttons-view{
+    background-color: #FBFBFB;
+    width: 100%;
+}
+
+.card-body {
+    padding: 1.25rem 0;
+}
+
+.card {
+    background-color: aliceblue;
 }
 
 @media (min-width: 1200px) {
