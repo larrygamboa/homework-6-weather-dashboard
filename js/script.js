@@ -30,14 +30,6 @@ $("#city-search").on("click", function(event) {
     localStorage.setItem("userInput", JSON.stringify(userInput));
     console.log(localStorage);
 
-    // var storedCities;
-
-    // if (localStorage.getItem(storedCities)) {
-    //     storedCities = JSON.parse(localStorage.getItem(storedCities));
-    //     writeSearchHistory(storedCities);
-    // } else {
-    //     storedCities = [];
-    // };
 });
 
 // Render default cities buttons
